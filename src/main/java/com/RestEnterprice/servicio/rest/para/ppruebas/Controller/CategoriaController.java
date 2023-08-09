@@ -26,7 +26,7 @@ public class CategoriaController {
     @PostMapping("/guardarcategoria")
     public ResponseEntity<Void> createServicio(@RequestBody Categoria serv) {
         try {
-            catservice.savecategoria(serv);;
+            catservice.savecategoria(serv);
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
