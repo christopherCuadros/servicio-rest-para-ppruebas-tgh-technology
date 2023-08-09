@@ -1,4 +1,5 @@
 com\RestEnterprice\servicio\rest\para\ppruebas\service\ProductoService.class
+com\RestEnterprice\servicio\rest\para\ppruebas\CorsConfiguration.class
 com\RestEnterprice\servicio\rest\para\ppruebas\Model\Producto.class
 com\RestEnterprice\servicio\rest\para\ppruebas\ServicioRestParaPpruebasApplication.class
 com\RestEnterprice\servicio\rest\para\ppruebas\Repository\AdministradorRepository.class
