@@ -1,6 +1,7 @@
 package com.RestEnterprice.servicio.rest.para.ppruebas.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,12 @@ public class ServiciosService {
 
     // Actualizar estado del servicio
     public void actualizarEstadoAInactivo(Integer id) {
-        servicesrepo.actualizarEstadoAInactivo(id);
+        Optional<Servicios> serv = servicesrepo.findById(id);
+        if(serv.isPresent()){
+            Servicios obtenservice = serv.get();
+            obtenservice.setEstadoServicio("Inactivo");
+            servicesrepo.save(obtenservice);
+        }
     }
 
     
