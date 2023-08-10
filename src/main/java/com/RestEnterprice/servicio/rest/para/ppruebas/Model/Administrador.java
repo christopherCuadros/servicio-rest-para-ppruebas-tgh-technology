@@ -18,7 +18,7 @@ public class Administrador {
     private String dni;
     private String telefono;
     private String correo;
-    private String usaurio;
+    private String usuario;
     private String password;
     private String estado;
     
@@ -58,11 +58,11 @@ public class Administrador {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    public String getUsaurio() {
-        return usaurio;
+    public String getUsuario() {
+        return usuario;
     }
-    public void setUsaurio(String usaurio) {
-        this.usaurio = usaurio;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
     public String getPassword() {
         return password;

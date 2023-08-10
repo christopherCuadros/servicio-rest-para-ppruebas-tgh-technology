@@ -19,7 +19,7 @@ public class Personal {
     private String telefono;
     private String correo;
     private String estado;
-    private String disponiblidad;
+    private String disponibilidad;
     
     public Integer getCodigoPersonal() {
         return codigoPersonal;
@@ -63,11 +63,11 @@ public class Personal {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    public String getDisponiblidad() {
-        return disponiblidad;
+    public String getDisponibilidad() {
+        return disponibilidad;
     }
-    public void setDisponiblidad(String disponiblidad) {
-        this.disponiblidad = disponiblidad;
+    public void setDisponibilidad(String disponibilidad) {
+        this.disponibilidad = disponibilidad;
     }
 
     

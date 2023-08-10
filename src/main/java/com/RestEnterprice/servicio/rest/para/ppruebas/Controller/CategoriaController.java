@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Categoria;
-import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Personal;
 import com.RestEnterprice.servicio.rest.para.ppruebas.service.CategoriaService;
 
 import lombok.AllArgsConstructor;
