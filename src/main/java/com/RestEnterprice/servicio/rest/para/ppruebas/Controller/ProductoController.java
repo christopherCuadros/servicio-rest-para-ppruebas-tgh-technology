@@ -67,5 +67,15 @@ public class ProductoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @PutMapping("activarProduct/{codigo}")
+    public ResponseEntity<Void> activarProducto(@PathVariable Integer codigo){
+        try {
+            prodservice.ActivarProducto(codigo);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
     
 }

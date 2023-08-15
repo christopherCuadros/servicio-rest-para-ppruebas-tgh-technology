@@ -63,6 +63,16 @@ public class ServiciosController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @PutMapping("/activarService/{id}")
+    public ResponseEntity<Void> getActivarService(@PathVariable Integer id){
+        try {
+            servicioservice.activarEstadoaActivo(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
     
     
 }

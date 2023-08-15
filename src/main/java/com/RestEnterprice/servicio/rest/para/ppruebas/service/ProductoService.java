@@ -41,5 +41,16 @@ public class ProductoService {
             productorepo.save(obtenProd);
         }
     }
+
+    //Activar producto
+    public void ActivarProducto(Integer id){
+        Optional<Producto> prod = productorepo.findById(id);
+        if(prod.isPresent()){
+            Producto  producto= prod.get();
+            producto.setEstado("Activo");
+            productorepo.save(producto);
+        }
+
+    }
     
 }

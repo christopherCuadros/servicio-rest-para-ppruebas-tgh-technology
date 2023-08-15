@@ -43,6 +43,15 @@ public class ServiciosService {
             servicesrepo.save(obtenservice);
         }
     }
+    
+    public void activarEstadoaActivo(Integer id){
+        Optional<Servicios> serv = servicesrepo.findById(id);
+        if(serv.isPresent()){
+            Servicios oserv = serv.get();
+            oserv.setEstadoServicio("Activo");
+            servicesrepo.save(oserv);
+        }
+    }
 
     
 }
