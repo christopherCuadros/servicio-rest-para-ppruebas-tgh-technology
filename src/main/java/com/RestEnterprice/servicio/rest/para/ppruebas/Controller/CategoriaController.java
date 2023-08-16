@@ -58,7 +58,7 @@ public class CategoriaController {
         return ResponseEntity.status(HttpStatus.OK).body(catego);
     }
 
-    @PutMapping(value="inactivarCategoria/{id}")
+    @PutMapping("/inactivarCategoria/{id}")
     public ResponseEntity<Void> inactivarCategoria(@PathVariable Integer id) {
        try {
          catservice.inactivarCategoria(id);
@@ -69,7 +69,7 @@ public class CategoriaController {
        }
     }
 
-    @PutMapping(value="activarCategoria/{id}")
+    @PutMapping("activarCategoria/{id}")
     public ResponseEntity<Void> activarCategoria(@PathVariable Integer id) {
        try {
          catservice.activarCategoria(id);

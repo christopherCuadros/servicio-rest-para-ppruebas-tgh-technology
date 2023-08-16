@@ -28,7 +28,7 @@ public class CategoriaService {
         Optional<Categoria> cat = categoriarepo.findById(id);
         if(cat.isPresent()){
             Categoria categoria = cat.get();
-            categoria.setEstado("Activo");
+            categoria.setEstado("Inactivo");
             categoriarepo.save(categoria);
         }
     }
