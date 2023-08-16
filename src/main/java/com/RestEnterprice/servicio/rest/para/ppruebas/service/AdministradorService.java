@@ -1,5 +1,7 @@
 package com.RestEnterprice.servicio.rest.para.ppruebas.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Administrador;
@@ -17,7 +19,7 @@ public class AdministradorService {
         adminrepo.save(admin);
     }
 
-    public Iterable<Administrador> allAdmin(){
-        return adminrepo.findAll();
+    public List<Administrador> getAllAdmins(String estado, String apellido){
+        return adminrepo.buscarPorEstadoYNombre(estado, apellido);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Administrador;
@@ -34,9 +35,10 @@ public class AdministradorController {
     }
 
     @GetMapping("/listarAdministrador")
-    public ResponseEntity<List<Administrador>> listarPersonal() {
-        List<Administrador> catego = (List<Administrador>) adminservice.allAdmin();
-        return ResponseEntity.status(HttpStatus.OK).body(catego);
+    public ResponseEntity<List<Administrador>> listarPersonal(@RequestParam(name = "estado", required = false) String estado,
+     @RequestParam(name = "apellidos", required = false) String apellido) {
+        List<Administrador> getadmin = adminservice.getAllAdmins(estado, apellido);
+        return ResponseEntity.status(HttpStatus.OK).body(getadmin); 
     }
 
     
