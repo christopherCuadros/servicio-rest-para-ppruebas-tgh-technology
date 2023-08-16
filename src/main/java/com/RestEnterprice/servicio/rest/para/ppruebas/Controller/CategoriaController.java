@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,8 +27,22 @@ public class CategoriaController {
 
     private final CategoriaService catservice;
 
+    // @PostMapping("/guardarcategoria")
+    // public ResponseEntity<Void> createServicio(@RequestBody Categoria serv) {
+    //     try {
+    //         catservice.savecategoria(serv);
+    //         return ResponseEntity.status(HttpStatus.OK).build();
+    //     } catch (Exception e) {
+    //         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    //     }
+    // }
     @PostMapping("/guardarcategoria")
     public ResponseEntity<Void> createServicio(@RequestBody Categoria serv) {
+        
+        if(serv == null || serv.getNombreCategoria().isEmpty() || serv.getDescripcion().isEmpty() || serv.getEstado().isEmpty()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+            
         try {
             catservice.savecategoria(serv);
             return ResponseEntity.status(HttpStatus.OK).build();
@@ -35,6 +50,7 @@ public class CategoriaController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+    
 
     @GetMapping("/listarcategoria")
     public ResponseEntity<List<Categoria>> listarPersonal(@RequestParam(name = "estado", required = false) String estado,@RequestParam(name= "nameCategory", required = false) String name) {
@@ -62,6 +78,17 @@ public class CategoriaController {
        } catch (Exception e) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
        }
+    }
+
+    @DeleteMapping("eliminarcategoria/{id}")
+    public ResponseEntity<Void> eliminarCategoria(@PathVariable Integer id){
+        try {
+            catservice.deleteCategoria(id);
+            return ResponseEntity.status(HttpStatus.OK).build();
+            
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
     
 }

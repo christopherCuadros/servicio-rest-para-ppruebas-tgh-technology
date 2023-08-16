@@ -42,4 +42,11 @@ public class CategoriaService {
         }
     }
 
+    public void deleteCategoria(Integer id){
+        Optional<Categoria> cat = categoriarepo.findById(id);
+        if(cat.isPresent()){
+            categoriarepo.deleteById(id);
+        }
+    }
+
 }
