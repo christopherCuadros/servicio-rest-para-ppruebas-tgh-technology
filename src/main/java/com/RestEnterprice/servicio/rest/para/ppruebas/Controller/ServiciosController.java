@@ -39,8 +39,9 @@ public class ServiciosController {
 
     @GetMapping("/listar")
     public ResponseEntity<List<Servicios>> listarServiciosActivos(@RequestParam(name = "estado", required = false) String estado,
-            @RequestParam(name = "nameservice", required = false) String textoBusqueda) {
-                List<Servicios> servicios = servicioservice.listarServicios(estado, textoBusqueda);
+            @RequestParam(name = "nameservice", required = false) String textoBusqueda,
+            @RequestParam(name = "disponibilidad", required = false) String disponibilidad) {
+                List<Servicios> servicios = servicioservice.listarServicios(estado, textoBusqueda,disponibilidad);
                 return ResponseEntity.status(HttpStatus.OK).body(servicios);
     }
     

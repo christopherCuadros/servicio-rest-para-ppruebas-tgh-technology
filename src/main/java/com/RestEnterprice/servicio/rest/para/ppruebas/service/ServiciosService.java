@@ -23,8 +23,8 @@ public class ServiciosService {
     }
 
     // LISTAR
-    public List<Servicios> listarServicios(String estado, String textoBusqueda) {
-        return servicesrepo.buscarPorEstadoYNombre(estado, textoBusqueda);
+    public List<Servicios> listarServicios(String estado, String textoBusqueda,String disponibilidad) {
+        return servicesrepo.buscarPorEstadoYNombre(estado, textoBusqueda,disponibilidad);
     }
 
     // Eliminar
