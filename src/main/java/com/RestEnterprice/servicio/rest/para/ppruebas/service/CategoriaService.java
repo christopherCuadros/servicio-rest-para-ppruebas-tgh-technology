@@ -1,5 +1,8 @@
 package com.RestEnterprice.servicio.rest.para.ppruebas.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Categoria;
@@ -17,7 +20,26 @@ public class CategoriaService {
         categoriarepo.save(cat);
     }
 
-    public Iterable<Categoria> allCategoria(){
-        return categoriarepo.findAll();
+    public List<Categoria> getAllCategories(String estado, String buscar){
+        return categoriarepo.buscarPorEstadoYNombre(estado, buscar);  
     }
+
+    public void inactivarCategoria(Integer id){
+        Optional<Categoria> cat = categoriarepo.findById(id);
+        if(cat.isPresent()){
+            Categoria categoria = cat.get();
+            categoria.setEstado("Activo");
+            categoriarepo.save(categoria);
+        }
+    }
+
+    public void activarCategoria(Integer id){
+        Optional<Categoria> cat = categoriarepo.findById(id);
+        if(cat.isPresent()){
+            Categoria categoria = cat.get();
+            categoria.setEstado("Activo");
+            categoriarepo.save(categoria);
+        }
+    }
+
 }

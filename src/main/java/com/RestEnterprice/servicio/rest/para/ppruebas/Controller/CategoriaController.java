@@ -8,12 +8,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Categoria;
 import com.RestEnterprice.servicio.rest.para.ppruebas.service.CategoriaService;
 
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @RestController
 @AllArgsConstructor
@@ -33,9 +37,31 @@ public class CategoriaController {
     }
 
     @GetMapping("/listarcategoria")
-    public ResponseEntity<List<Categoria>> listarPersonal() {
-        List<Categoria> catego = (List<Categoria>) catservice.allCategoria();
+    public ResponseEntity<List<Categoria>> listarPersonal(@RequestParam(name = "estado", required = false) String estado,@RequestParam(name= "nameCategory", required = false) String name) {
+        List<Categoria> catego = catservice.getAllCategories(estado, name);
         return ResponseEntity.status(HttpStatus.OK).body(catego);
+    }
+
+    @PutMapping(value="inactivarCategoria/{id}")
+    public ResponseEntity<Void> inactivarCategoria(@PathVariable Integer id) {
+       try {
+         catservice.inactivarCategoria(id);
+         return ResponseEntity.ok().build();
+    
+       } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+       }
+    }
+
+    @PutMapping(value="activarCategoria/{id}")
+    public ResponseEntity<Void> activarCategoria(@PathVariable Integer id) {
+       try {
+         catservice.activarCategoria(id);
+         return ResponseEntity.ok().build();
+    
+       } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+       }
     }
     
 }
