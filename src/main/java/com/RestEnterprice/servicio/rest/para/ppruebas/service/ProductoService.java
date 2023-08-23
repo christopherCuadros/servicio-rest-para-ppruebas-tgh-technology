@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.RestEnterprice.servicio.rest.para.ppruebas.DAO.ProductoDao;
 import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Producto;
-import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Servicios;
 import com.RestEnterprice.servicio.rest.para.ppruebas.Repository.ProductoRepository;
 
 import lombok.AllArgsConstructor;
@@ -17,8 +17,20 @@ public class ProductoService {
 
     private final ProductoRepository productorepo;
 
+
     public void saveProducto(Producto prod){
         productorepo.save(prod);
+    }
+
+    public void saveProductoWitdImage(ProductoDao prod, String url){
+        Producto producto = new Producto();
+        producto.setNombre(prod.getNombre());
+        producto.setDescripcion(prod.getDescripcion());
+        producto.setPrecio(prod.getPrecio());
+        producto.setStock(prod.getStock());
+        producto.setEstado(prod.getEstado());
+        producto.setRutaImagen(url);
+        productorepo.save(producto);
     }
 
 
@@ -43,7 +55,7 @@ public class ProductoService {
     }
 
     //Activar producto
-    public void ActivarProducto(Integer id){
+    public void activarProducto(Integer id){
         Optional<Producto> prod = productorepo.findById(id);
         if(prod.isPresent()){
             Producto  producto= prod.get();

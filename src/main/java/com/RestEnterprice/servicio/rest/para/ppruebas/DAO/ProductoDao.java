@@ -1,49 +1,16 @@
-package com.RestEnterprice.servicio.rest.para.ppruebas.Model;
+package com.RestEnterprice.servicio.rest.para.ppruebas.DAO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import org.springframework.web.multipart.MultipartFile;
 
-@Entity
-@Table(name = "producto")
-public class Producto {
+public class ProductoDao {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nombre;
     private String descripcion;
     private float precio;
     private Integer stock;
     private String estado;
-    private String rutaImagen;
 
-    
-    
-    public Producto() {
-    }
-
-    
-    public Producto(Integer id, String nombre, String descripcion, float precio, Integer stock, String estado,
-            String rutaImagen) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.stock = stock;
-        this.estado = estado;
-        this.rutaImagen = rutaImagen;
-    }
-
-
-    public String getRutaImagen() {
-        return rutaImagen;
-    }
-    public void setRutaImagen(String rutaImagen) {
-        this.rutaImagen = rutaImagen;
-    }
     public Integer getId() {
         return id;
     }
@@ -80,6 +47,5 @@ public class Producto {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
+   
 }
