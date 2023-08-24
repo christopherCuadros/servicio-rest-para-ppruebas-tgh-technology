@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.RestEnterprice.servicio.rest.para.ppruebas.DAO.ProductoDao;
+import com.RestEnterprice.servicio.rest.para.ppruebas.DAO.ServicioDAO;
+import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Producto;
 import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Servicios;
 import com.RestEnterprice.servicio.rest.para.ppruebas.Repository.ServicioRepository;
 
@@ -20,6 +23,30 @@ public class ServiciosService {
     // GUARDAR
     public void saveServicio(Servicios serv){
         servicesrepo.save(serv);
+    }
+
+    //GUARDAR CON IMAGENES
+    public void saveServiceWitdImage(ServicioDAO serv, String url){
+        if(url !=null){
+            Servicios servicios = new Servicios();
+            servicios.setNombreServicio(serv.getNombreServicio());
+            servicios.setDescripcion(serv.getDescripcion());
+            servicios.setEstadoServicio(serv.getEstadoServicio());
+            servicios.setDisponibilidadServicio(serv.getDisponibilidadServicio());
+            servicios.setPrecio(serv.getPrecio());
+            servicios.setRutaImagen(url);
+            servicesrepo.save(servicios);
+        }else{
+            Servicios services = new Servicios();
+            services.setNombreServicio(serv.getNombreServicio());
+            services.setDescripcion(serv.getDescripcion());
+            services.setEstadoServicio(serv.getEstadoServicio());
+            services.setDisponibilidadServicio(serv.getDisponibilidadServicio());
+            services.setPrecio(serv.getPrecio());
+            services.setRutaImagen(null);
+            servicesrepo.save(services);
+        }
+        
     }
 
     // LISTAR

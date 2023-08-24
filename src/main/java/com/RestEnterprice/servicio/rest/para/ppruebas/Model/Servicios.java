@@ -18,7 +18,30 @@ public class Servicios {
     private float precio;
     private String estadoServicio;
     private String disponibilidadServicio;
+    private String rutaImagen;
     
+
+    
+    public Servicios() {
+    }
+    
+    public Servicios(Integer idServicio, String nombreServicio, String descripcion, float precio, String estadoServicio,
+            String disponibilidadServicio, String rutaImagen) {
+        this.idServicio = idServicio;
+        this.nombreServicio = nombreServicio;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.estadoServicio = estadoServicio;
+        this.disponibilidadServicio = disponibilidadServicio;
+        this.rutaImagen = rutaImagen;
+    }
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
     public Integer getIdServicio() {
         return idServicio;
     }

@@ -9,6 +9,7 @@ com\RestEnterprice\servicio\rest\para\ppruebas\Model\Categoria.class
 com\RestEnterprice\servicio\rest\para\ppruebas\service\CategoriaService.class
 com\RestEnterprice\servicio\rest\para\ppruebas\Repository\PersonalRepository.class
 com\RestEnterprice\servicio\rest\para\ppruebas\DAO\ProductoDao.class
+com\RestEnterprice\servicio\rest\para\ppruebas\DAO\ServicioDAO.class
 com\RestEnterprice\servicio\rest\para\ppruebas\Model\Producto.class
 com\RestEnterprice\servicio\rest\para\ppruebas\controlFiles.class
 com\RestEnterprice\servicio\rest\para\ppruebas\Model\Servicios.class
