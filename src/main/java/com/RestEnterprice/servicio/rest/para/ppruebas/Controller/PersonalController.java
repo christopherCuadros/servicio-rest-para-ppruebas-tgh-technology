@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Personal;
-import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Producto;
 import com.RestEnterprice.servicio.rest.para.ppruebas.service.PersonalService;
 
 import lombok.AllArgsConstructor;

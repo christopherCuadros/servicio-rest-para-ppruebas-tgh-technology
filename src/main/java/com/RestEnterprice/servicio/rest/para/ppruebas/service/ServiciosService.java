@@ -27,7 +27,6 @@ public class ServiciosService {
 
     //GUARDAR CON IMAGENES
     public void saveServiceWitdImage(ServicioDAO serv, String url){
-        if(url !=null){
             Servicios servicios = new Servicios();
             servicios.setNombreServicio(serv.getNombreServicio());
             servicios.setDescripcion(serv.getDescripcion());
@@ -36,16 +35,7 @@ public class ServiciosService {
             servicios.setPrecio(serv.getPrecio());
             servicios.setRutaImagen(url);
             servicesrepo.save(servicios);
-        }else{
-            Servicios services = new Servicios();
-            services.setNombreServicio(serv.getNombreServicio());
-            services.setDescripcion(serv.getDescripcion());
-            services.setEstadoServicio(serv.getEstadoServicio());
-            services.setDisponibilidadServicio(serv.getDisponibilidadServicio());
-            services.setPrecio(serv.getPrecio());
-            services.setRutaImagen(null);
-            servicesrepo.save(services);
-        }
+     
         
     }
 

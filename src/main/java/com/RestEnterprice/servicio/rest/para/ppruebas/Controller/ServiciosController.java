@@ -3,10 +3,10 @@ package com.RestEnterprice.servicio.rest.para.ppruebas.Controller;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,8 +24,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.RestEnterprice.servicio.rest.para.ppruebas.controlFiles;
 import com.RestEnterprice.servicio.rest.para.ppruebas.DAO.ServicioDAO;
+import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Producto;
 import com.RestEnterprice.servicio.rest.para.ppruebas.Model.Servicios;
 import com.RestEnterprice.servicio.rest.para.ppruebas.service.ServiciosService;
+
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
@@ -76,6 +78,24 @@ public class ServiciosController {
                 List<Servicios> servicios = servicioservice.listarServicios(estado, textoBusqueda,disponibilidad);
                 return ResponseEntity.status(HttpStatus.OK).body(servicios);
     }
+
+    @GetMapping("/listarServiceImage")
+    public ResponseEntity<List<Servicios>> listarServiciosconImagen(@RequestParam(name = "estado", required = false) String estado,
+            @RequestParam(name = "nameservice", required = false) String textoBusqueda,
+            @RequestParam(name = "disponibilidad", required = false) String disponibilidad) {
+                List<Servicios> servicios = servicioservice.listarServicios(estado, textoBusqueda,disponibilidad);
+
+                if(servicios.isEmpty()){
+                    return ResponseEntity.noContent().build();
+                }
+                List<Servicios> servicosResponse = servicios.stream()
+                .map(serv -> new Servicios(serv.getIdServicio(),serv.getNombreServicio(), serv.getDescripcion(),serv.getPrecio(),serv.getEstadoServicio(),serv.getDisponibilidadServicio(),serv.getRutaImagen()))
+                .collect(Collectors.toList());
+
+                return ResponseEntity.ok(servicosResponse);
+    }
+
+
     
     @DeleteMapping("/deleteService/{id}")
     public ResponseEntity<Void> eliminarServicio(@PathVariable Integer id) {
